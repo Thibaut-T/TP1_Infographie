@@ -1,4 +1,3 @@
-
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / (window.innerHeight-200), 0.1, 1000 );
 
@@ -13,15 +12,12 @@ const material = new THREE.PointsMaterial({ //définition taille et couleurs des
 
 const points = []; // tableau de points
 
-
-// Stocker les points du cercle parametrique dans le tableau points
-
-//.............à remplir
-
 let button = document.getElementById("valider");
 button.addEventListener("click", calculate);
 
-
+/**
+ * Récupère les équations, calcule la courbe et affiche le rendu
+ */
 function calculate(){
 
     let x,y,X = document.getElementById("X"),Y = document.getElementById("Y");
@@ -32,20 +28,27 @@ function calculate(){
         points.push( new THREE.Vector3( evaluate(t,x), evaluate(t,y), 0 ) );
     }
     
-    afficher(material);
+    afficher();
 }
 
-function afficher(mat){
+/**
+ * Affiche les points de la courbe paramétrique
+ */
+function afficher(){
     const geometry = new THREE.BufferGeometry().setFromPoints( points );
     
-    const figure = new THREE.Points( geometry, mat );
+    const figure = new THREE.Points( geometry, material );
     scene.add( figure ); // on ajoute à la scène tous les points
     
     camera.position.z = 5;
     renderer.render( scene, camera );
 }
 
-
+/**
+ * Modifie une équation pour qu'elle soit lisible lors de l'évaluation. Elle ajoute la syntax de Math.js
+ * @param {string} str 
+ * @returns {string}
+ */
 function transformString(str){
     let tab = str.split("cos");
     str = tab.join("Math.cos");
@@ -62,6 +65,12 @@ function transformString(str){
     return str;
 }
 
+/**
+ * Evalue une équation pour un t donné
+ * @param {float} t 
+ * @param {string} str 
+ * @returns {float}
+ */
 function evaluate(t, str){
     let tab = str.split("*t");
     str = tab.join("*"+t);
