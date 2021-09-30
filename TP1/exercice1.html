@@ -5,11 +5,11 @@
 		<title>TP 1</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<style>
-			input { width: 50px; margin-left: 10px; border: solid black 2px; height: 10px;};
+			input { width: 50px; margin-left: 10px; border: solid black 2px; height: 5px;};
 		</style>
 	</head>
 	<body>
-		<div class="jumbotron jumbotron-fluid" style="background-color:aqua">
+		<div class="jumbotron jumbotron-fluid" style="background-color:aqua; height:100px;">
 			<div class="container">
 			  <h1 style="margin-left:22%; text-decoration:underline;">Afficheur d'équations paramètriques</h1>
 			</div>
@@ -29,10 +29,16 @@
 		<br>
 		<div class="row">
 			<div class="col">
-				<button type="submit" class="btn btn-primary" id="valider" style="margin-left:35%;margin-bottom: 5%;">Valider</button>
+				<button type="submit" class="btn btn-primary" id="valider" style="margin-left:35%;margin-bottom: 2%;">Valider</button>
 			</div>
 			<div class="col">
-				<button type="button" class="btn btn-danger" id="reset" style="margin-left:35%;" onClick="document.location.reload(true)">Reset</button>
+				<button type="button" class="btn btn-secondary" id="coeur" style="margin-left:35%;margin-bottom: 2%;">Coeur</button>
+			</div>
+			<div class="col">
+				<button type="button" class="btn btn-success" id="cercle" style="margin-left:35%;margin-bottom: 2%;">Cercle</button>
+			</div>
+			<div class="col">
+				<button type="button" class="btn btn-danger" id="reset" style="margin-left:35%;">Reset</button>
 			</div>
 		</div>
 		<script src="three.js"></script>
